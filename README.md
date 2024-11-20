@@ -1,6 +1,8 @@
 # Public
 リソース名を自動で取得してそのリソース名に以下が含まれている場合削除されます。
 
+将来的には、アプリにログが出力されるようにして、
+そこで、リソース名を追加できるようにしたいです。
 
                         if (className.contains("Ad")
                                 || className.contains("com.five_corp.ad.internal.view.d")
