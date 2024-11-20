@@ -4,6 +4,9 @@
 将来的には、アプリにログを出力されるようにして、
 そこで、リソース名を追加できるようにしたいです。
 
+それまで、ディスカッションで、〇〇アプリの広告が消えない
+ってやつを送ってくれたら対応するかもです
+
                         if (className.contains("Ad")
                                 || className.contains("com.five_corp.ad.internal.view.d")
                                 || className.equals("com.five_corp.ad.internal.view.m")
