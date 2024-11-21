@@ -13,7 +13,7 @@ download/Ad_Name
 
 2chの上の黒の部分は、
 o.lastEntry
-という、リソース名なので、それを、入力して、
+という、リソース名なので、「o.lastEntry」を、入力して、
 SAVE AD CLASEES
 をクリックして、フックしてるアプリを再起動させます。
 
