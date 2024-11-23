@@ -52,6 +52,14 @@ jobs:
         with:
           tag: "${{ env.version }}"
 
+      - name: Set environment variables for signing
+        run: |
+          echo "STORE_PASSWORD=${{ secrets.STORE_PASSWORD }}" >> $GITHUB_ENV
+          echo "KEY_ALIAS=${{ secrets.KEY_ALIAS }}" >> $GITHUB_ENV
+          echo "KEY_PASSWORD=${{ secrets.KEY_PASSWORD }}" >> $GITHUB_ENV
+
+
+
       - name: Release check
         if: github.event.inputs.release == 'true'
         run: |
