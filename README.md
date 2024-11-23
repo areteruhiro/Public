@@ -1,4 +1,4 @@
-# Public
+# NoAds
 
 
 （使い方）
