@@ -79,8 +79,7 @@ jobs:
           # すでに存在するファイルがあれば削除
           rm -f app/android.jks
           echo "${{ secrets.STORE_FILE }}" | base64 -d > app/android.jks
-          mkdir -p app
-          mv app/android.jks app/
+
 
 
       - name: Build with Gradle
