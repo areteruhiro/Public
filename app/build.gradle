@@ -1,32 +1,33 @@
 plugins {
     id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
 }
 
 android {
     namespace 'io.test.hiro.NoAD'
-    compileSdk 35
+    compileSdk 34
 
     defaultConfig {
-        minSdk 28
-        targetSdk 35
-        versionCode 15
-        versionName "1.5"
+        minSdk 23
+        targetSdk 34
+        versionCode 20
+        versionName "2.4"
+        proguardFiles += 'proguard-rules.pro'
+        multiDexEnabled false
+        vectorDrawables {
+            useSupportLibrary true
+        }
     }
 
     signingConfigs {
-        android {
-            storeFile file('android.jks')
-            storePassword 'android'
-            keyAlias 'android'
-            keyPassword 'android'
-        }
         release {
-            storeFile file('release.jks')
-            storePassword System.getenv('STORE_PASSWORD')
-            keyAlias System.getenv('KEY_ALIAS')
-            keyPassword System.getenv('KEY_PASSWORD')
+            storeFile file('./misc/keystore.jks')
+            storePassword 'i1KY2P37COLmzLtE'
+            keyAlias 'key0'
+            keyPassword 'i1KY2P37COLmzLtE'
         }
     }
+
     buildTypes {
         configureEach {
             signingConfig signingConfigs.release
@@ -37,24 +38,32 @@ android {
         }
     }
 
+    lint {
+        checkReleaseBuilds false
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
-}
 
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    aaptOptions {
+        aaptOptions.additionalParameters '--allow-reserved-package-id', '--package-id', '0x64'
+    }
+
+    packagingOptions {
+        exclude '**'
+    }
+}
 
 dependencies {
-    //noinspection GradleCompatible
-    implementation 'com.android.support:customtabs:23.0.0'
     compileOnly 'de.robv.android.xposed:api:82'
-    implementation 'org.mozilla:rhino:1.7.15'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.0' // バージョンはプロジェクトに合わせて調整
-    implementation "androidx.work:work-runtime:2.10.0"
-    implementation 'com.google.android.material:material:1.9.0' // バージョンを最新に合わせてください
-
-}
-
-tasks.withType(JavaCompile).configureEach {
-    options.compilerArgs << "-Xlint:deprecation" << "-Xlint:unchecked"
 }
