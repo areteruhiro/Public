@@ -76,6 +76,9 @@ jobs:
 
       - name: Build with Gradle
         run: |
+          # ./gradlew に実行権限を付与
+          chmod +x ./gradlew
+          
           if [ "${{ inputs.release }}" == "true" ]; then
             echo "${{ secrets.STORE_FILE }}" | base64 -d > app/release.jks
             export STORE_PASSWORD="${{ secrets.STORE_PASSWORD }}"
@@ -86,6 +89,7 @@ jobs:
           else
             ./gradlew assembleDebug --no-daemon --stacktrace
           fi
+
 
       - name: Upload Module APK
         uses: actions/upload-artifact@v4
