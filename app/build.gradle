@@ -4,13 +4,13 @@ plugins {
 
 android {
     namespace 'io.test.hiro.NoAD'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         minSdk 23
         targetSdk 34
         versionCode 20
-        versionName "2.4"
+        versionName "1"
         proguardFiles += 'proguard-rules.pro'
         multiDexEnabled false
         vectorDrawables {
