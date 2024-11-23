@@ -16,11 +16,6 @@ on:
         type: boolean
         required: true
         default: false
-      lspatch:
-        description: 'LSPatch'
-        type: boolean
-        required: true
-        default: false
 
 jobs:
   build:
