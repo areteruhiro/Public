@@ -55,43 +55,44 @@ jobs:
 
       - name: Release check
         if: github.event.inputs.release == 'true'
-         run: |
+        run: |
           # STORE_FILE が設定されていない場合
           if [ -z "${{ secrets.STORE_FILE }}" ]; then
             echo -e "\nERROR!\nSTORE_FILE is missing!\n"
             echo "You need to set up a signing key (Base64 encoded JKS format)."
             exit 1
-            fi
+          fi
     
-    # STORE_PASSWORD が設定されていない場合
-    if [ -z "${{ secrets.STORE_PASSWORD }}" ]; then
-      echo -e "\nERROR!\nSTORE_PASSWORD is missing!\n"
-      echo "You need to provide the key store password."
-      exit 1
-    fi
+          # STORE_PASSWORD が設定されていない場合
+          if [ -z "${{ secrets.STORE_PASSWORD }}" ]; then
+            echo -e "\nERROR!\nSTORE_PASSWORD is missing!\n"
+            echo "You need to provide the key store password."
+            exit 1
+          fi
     
-    # KEY_ALIAS が設定されていない場合
-    if [ -z "${{ secrets.KEY_ALIAS }}" ]; then
-      echo -e "\nERROR!\nKEY_ALIAS is missing!\n"
-      echo "You need to provide the key alias."
-      exit 1
-    fi
+          # KEY_ALIAS が設定されていない場合
+          if [ -z "${{ secrets.KEY_ALIAS }}" ]; then
+            echo -e "\nERROR!\nKEY_ALIAS is missing!\n"
+            echo "You need to provide the key alias."
+            exit 1
+          fi
     
-    # KEY_PASSWORD が設定されていない場合
-    if [ -z "${{ secrets.KEY_PASSWORD }}" ]; then
-      echo -e "\nERROR!\nKEY_PASSWORD is missing!\n"
-      echo "You need to provide the key password."
-      exit 1
-    fi
+          # KEY_PASSWORD が設定されていない場合
+          if [ -z "${{ secrets.KEY_PASSWORD }}" ]; then
+            echo -e "\nERROR!\nKEY_PASSWORD is missing!\n"
+            echo "You need to provide the key password."
+            exit 1
+          fi
     
-    # バージョンタグが重複している場合
-    if [ "${{ steps.previous.outputs.tag }}" == "${{ env.version }}" ]; then
-      echo -e "\nERROR!\nThe same tag already exists!\n"
-      echo "Please change the versionName in build.gradle"
-      exit 1
-    fi
+          # バージョンタグが重複している場合
+          if [ "${{ steps.previous.outputs.tag }}" == "${{ env.version }}" ]; then
+            echo -e "\nERROR!\nThe same tag already exists!\n"
+            echo "Please change the versionName in build.gradle"
+            exit 1
+          fi
 
-    echo "All required signing information is set."
+          echo "All required signing information is set."
+
 
 
       - name: Build with Gradle
