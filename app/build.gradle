@@ -22,7 +22,8 @@ android {
         release {
             storeFile file('./misc/keystore.jks')
             storePassword 'android'
-            keyAlias 'android'
+            keyAlias 'key0'
+            
             keyPassword 'android'
         }
     }
