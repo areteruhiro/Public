@@ -16,6 +16,11 @@ on:
         type: boolean
         required: true
         default: false
+      lspatch:
+        description: 'LSPatch'
+        type: boolean
+        required: true
+        default: false
 
 jobs:
   build:
@@ -31,10 +36,10 @@ jobs:
       - name: Set environments
         run: |
           {
-            echo "version=v$(grep versionName app/build.gradle | awk '{print $2}' | tr -d \")"
             echo "commit=$(echo ${{ github.sha }} | cut -c-7)"
             echo "repo=$(echo ${GITHUB_REPOSITORY#$GITHUB_REPOSITORY_OWNER/})"
           } >> $GITHUB_ENV
+
 
       - name: Setup Java
         uses: actions/setup-java@v4
