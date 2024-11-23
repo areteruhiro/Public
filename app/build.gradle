@@ -28,26 +28,21 @@ android {
         }
     }
     buildTypes {
-        debug {
-            minifyEnabled false
-            multiDexEnabled false
-            proguardFiles += 'proguard-rules.pro'
-            signingConfig signingConfigs.android
+        configureEach {
+            signingConfig signingConfigs.release
         }
         release {
             minifyEnabled true
-            multiDexEnabled false
-            proguardFiles += 'proguard-rules.pro'
-            if (file('release.jks').exists()) {
-                signingConfig signingConfigs.release
-            }
+            shrinkResources true
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
 }
+
 
 dependencies {
     //noinspection GradleCompatible
