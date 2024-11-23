@@ -1,0 +1,2 @@
+-keep class io.test.hiro.NoAD.Main
+-ignorewarnings

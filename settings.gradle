@@ -1,0 +1,19 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    plugins {
+        id 'com.android.application' version '8.6.1' apply false
+    }
+}
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = "https://api.xposed.info" }
+    }
+}
+
+rootProject.name = "NoAD"
+include 'app'

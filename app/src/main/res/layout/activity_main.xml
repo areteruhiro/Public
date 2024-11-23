@@ -1,0 +1,32 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Switch for logging -->
+    <Switch
+        android:id="@+id/logSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enable Logging" />
+
+    <!-- EditText for entering ad class names -->
+    <EditText
+        android:id="@+id/adClassesEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter ad class names"
+        android:inputType="text"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Button to save the entered ad classes -->
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Ad Classes"
+        android:layout_marginTop="16dp"/>
+
+</LinearLayout>

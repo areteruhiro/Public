@@ -1,0 +1,65 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'io.test.hiro.NoAD'
+    compileSdk 35
+
+    defaultConfig {
+        minSdk 28
+        targetSdk 35
+        versionCode 15
+        versionName "1.5"
+    }
+
+    signingConfigs {
+        android {
+            storeFile file('android.jks')
+            storePassword '123456789'
+            keyAlias '123456789'
+            keyPassword '123456789'
+        }
+        release {
+            storeFile file('release.jks')
+            storePassword System.getenv('STORE_PASSWORD')
+            keyAlias System.getenv('KEY_ALIAS')
+            keyPassword System.getenv('KEY_PASSWORD')
+        }
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            multiDexEnabled false
+            proguardFiles += 'proguard-rules.pro'
+            signingConfig signingConfigs.android
+        }
+        release {
+            minifyEnabled true
+            multiDexEnabled false
+            proguardFiles += 'proguard-rules.pro'
+            if (file('release.jks').exists()) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    //noinspection GradleCompatible
+    implementation 'com.android.support:customtabs:23.0.0'
+    compileOnly 'de.robv.android.xposed:api:82'
+    implementation 'org.mozilla:rhino:1.7.15'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0' // バージョンはプロジェクトに合わせて調整
+    implementation "androidx.work:work-runtime:2.10.0"
+    implementation 'com.google.android.material:material:1.9.0' // バージョンを最新に合わせてください
+
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs << "-Xlint:deprecation" << "-Xlint:unchecked"
+}
