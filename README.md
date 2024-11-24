@@ -6,7 +6,7 @@
 Enableをオンにすると、
 download/Ad_Name
 に、アプリごとのリソース名が書き込まれるファイルが作成されます。
-そこに書いてるclass name を
+そこに書いてるclass nameまたはResources name を
 真ん中に記入します。
 複数個ある場合は、 ,で区切ります。
 
