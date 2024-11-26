@@ -250,9 +250,9 @@ public class Main implements IXposedHookLoadPackage {
             if ("com.google.android.webview".equals(packageName) || "com.google.android.gms".equals(packageName)) {
                 return; // 特定のパッケージの場合は処理を終了
             }
-            if (isLoggingEnabled()) {
-                return;
-            }
+    if (!isLoggingEnabled()) {
+        return; 
+    }
 
             // Prevent recursion
             if (isChangingColor) {
