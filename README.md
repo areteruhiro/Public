@@ -1,7 +1,9 @@
 # NoAds
 
+https://youtube.com/shorts/fak1zHt7TUM
 
 （使い方）
+
 
 Enableをオンにすると、
 download/Ad_Name
