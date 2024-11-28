@@ -89,6 +89,8 @@ public class Main implements IXposedHookLoadPackage {
                                 || className.equals("com.five_corp.ad.internal.view.m")
                                 || className.contains("com.mbridge.msdk.videocommon.view.MyImageView")
                                 || className.contains("com.mbridge.msdk.nativex.view.WindVaneWebViewForNV")
+                                || className.contains("Ads")
+                               || className.contains("ads")
                                 || adClassNames.stream().anyMatch(adClass -> {
                             if (adClass instanceof String) {
                                 // Check if the class name matches
@@ -116,6 +118,8 @@ public class Main implements IXposedHookLoadPackage {
                             if (resourceName != null) {
                                 // リソース名に広告関連のキーワードが含まれているかチェック
                                 isAdView = resourceName.contains("Ad")
+                                        || resourceName.contains("Ads")
+                                        || resourceName.contains("ads")
                                         || resourceName.contains("adaptive_banner_container")
                                         || resourceName.contains("footer_banner_ad_container")
                                         || resourceName.contains("ad_label")
@@ -334,7 +338,7 @@ public class Main implements IXposedHookLoadPackage {
             logFile = new File(backupDir, packageName  + "_resource_color_log.txt");
 
             // クラス名も含めたログエントリを作成
-            String logEntry = "Resource Name: " + resourceName + ", Color Code: " + colorCode + ", Class Name: " + className + "\n";
+            String logEntry = "Resource Name: " + resourceName + ", Color Code: " + colorCode + ", Class Name: " + className + "\n\n";
 
             // ログファイルに追記
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(logFile, true))) {
