@@ -153,15 +153,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void deleteRecursive(File fileOrDirectory) {
-        if (fileOrDirectory.isDirectory()) {
-            for (File child : fileOrDirectory.listFiles()) {
-                deleteRecursive(child);
-            }
-        }
-        fileOrDirectory.delete();
-    }
-
     // SharedPreferencesからad_classesを読み込む
     private String loadAdClassesFromPreferences() {
         SharedPreferences sharedPreferences = getSharedPreferences(PREF_NAME, MODE_PRIVATE);  // MODE_PRIVATEは推奨
